@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Convert JSON Data to HTML Table</title>
+    <style>
+        th, td, p, input, h3 {
+            font: 15px 'Segoe UI';
+        }
+
+        table, th, td {
+            border: solid 1px #ddd;
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+        }
+
+        th {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    
+    <input type='button' onclick='tableFromJson5()'
+           value='Makeup Table' />
+
+    <p id='showData'></p>
+
+    <p id='msg'></p>
+</body>
+
+<script>
+	// scroll down for ES6 features.
+
+	// using regular methods.
+
+    function tableFromJson5() {
+		// the json data. (you can change the values for output.)
+        // JavaScript source code
+        var mymakeup = [ {"Foundation":"LOreal Paris Infallible","Concealer":"Maybelline New York Fit me Concealer","Compact":"Maybelline New York Fit Me Oil Control","Highlighter":"BECCA Ignite Liquified Light Hightlighter","Kajal":"Lakme Eyeconic Kajal","Liner":"LOreal Paris Super Liner","Eyeshadow":"Makeup Revolution Eyeshadow Palette","Lipgloss":"SUGAR Time To Shine Lip Gloss","Creamylipstick":"MyGlamm LIT Creamy Matte Lipstick","Mattelipstick":"Kay Beauty Long Stay Matte Lipstick","Mattenail":"Littmuss Matte Chrome Nail Polish","Glitternail":"Lakme Color Crush Nail Art","Subtlenail":"Pear Nova Nail Polish"},
+        {"Foundation":"Kay Beauty Hydrating Foundation","Concealer":"L.A. Girl","Compact":"Kay Beauty Matte Compact","Highlighter":"Huda Beauty 3D Highlighter","Kajal":"Swiss Beauty Deep Black Kajal","Liner":"Kay Beauty Quick Dry Liquid Eyeliner","Eyeshadow":"SUGAR Blend The Rules Eyeshadow Palette","Lipgloss":"Lime Crime Wet Cherry Lip Gloss","Creamylipstick":"Kiko Milano Gossamer Emotion Creamy Lipstick","Mattelipstick":"Elle 18 Color Pops Matte Lipstick","Mattenail":"MyGlamm LIT Matte Nail Enamel","Glitternail":"Bella Voste Glitter Nail Paint","Subtlenail":"Olive and June Nail Polish"},
+        {"Foundation":"LOreal Paris Infallible","Concealer":"Maybelline New York Fit me Concealer","Compact":"Maybelline New York Fit Me Oil Control","Highlighter":"BECCA Ignite Liquified Light Hightlighter","Kajal":"Lakme Eyeconic Kajal","Liner":"LOreal Paris Super Liner","Eyeshadow":"Makeup Revolution Eyeshadow Palette","Lipgloss":"SUGAR Time To Shine Lip Gloss","Creamylipstick":"MyGlamm LIT Creamy Matte Lipstick","Mattelipstick":"Kay Beauty Long Stay Matte Lipstick","Mattenail":"Littmuss Matte Chrome Nail Polish","Glitternail":"Lakme Color Crush Nail Art","Subtlenail":"Pear Nova Nail Polish"},
+        {"Foundation":"LOreal Paris Infallible","Concealer":"Maybelline New York Fit me Concealer","Compact":"Maybelline New York Fit Me Oil Control","Highlighter":"BECCA Ignite Liquified Light Hightlighter","Kajal":"Lakme Eyeconic Kajal","Liner":"LOreal Paris Super Liner","Eyeshadow":"Makeup Revolution Eyeshadow Palette","Lipgloss":"SUGAR Time To Shine Lip Gloss","Creamylipstick":"MyGlamm LIT Creamy Matte Lipstick","Mattelipstick":"Kay Beauty Long Stay Matte Lipstick","Mattenail":"Littmuss Matte Chrome Nail Polish","Glitternail":"Lakme Color Crush Nail Art","Subtlenail":"Pear Nova Nail Polish"},
+        {"Foundation":"LOreal Paris Infallible","Concealer":"Maybelline New York Fit me Concealer","Compact":"Maybelline New York Fit Me Oil Control","Highlighter":"BECCA Ignite Liquified Light Hightlighter","Kajal":"Lakme Eyeconic Kajal","Liner":"LOreal Paris Super Liner","Eyeshadow":"Makeup Revolution Eyeshadow Palette","Lipgloss":"SUGAR Time To Shine Lip Gloss","Creamylipstick":"MyGlamm LIT Creamy Matte Lipstick","Mattelipstick":"Kay Beauty Long Stay Matte Lipstick","Mattenail":"Littmuss Matte Chrome Nail Polish","Glitternail":"Lakme Color Crush Nail Art","Subtlenail":"Pear Nova Nail Polish"},
+        {"Foundation":"LOreal Paris Infallible","Concealer":"Maybelline New York Fit me Concealer","Compact":"Maybelline New York Fit Me Oil Control","Highlighter":"BECCA Ignite Liquified Light Hightlighter","Kajal":"Lakme Eyeconic Kajal","Liner":"LOreal Paris Super Liner","Eyeshadow":"Makeup Revolution Eyeshadow Palette","Lipgloss":"SUGAR Time To Shine Lip Gloss","Creamylipstick":"MyGlamm LIT Creamy Matte Lipstick","Mattelipstick":"Kay Beauty Long Stay Matte Lipstick","Mattenail":"Littmuss Matte Chrome Nail Polish","Glitternail":"Lakme Color Crush Nail Art","Subtlenail":"Pear Nova Nail Polish"}];
+
+
+
+        var col = [];
+        for (var i = 0; i < mymakeup .length; i++) {
+            for (var key in mymakeup [i]) {
+                if (col.indexOf(key) === -1) {
+                    col.push(key);
+                }
+            }
+        }
+
+        // Create a table.
+        var table = document.createElement("table");
+
+        // Create table header row using the extracted headers above.
+        var tr = table.insertRow(-1);                   // table row.
+
+        for (var i = 0; i < col.length; i++) {
+            var th = document.createElement("th");      // table header.
+            th.innerHTML = col[i];
+            tr.appendChild(th);
+        }
+
+        // add json data to the table as rows.
+        for (var i = 0; i < mymakeup.length; i++) {
+
+            tr = table.insertRow(-1);
+
+            for (var j = 0; j < col.length; j++) {
+                var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = mymakeup [i][col[j]];
+            }
+        }
+
+        // Now, add the newly created table with json data, to a container.
+        var divShowData = document.getElementById('showData');
+        divShowData.innerHTML = "";
+        divShowData.appendChild(table);
+
+        
+    }
+
+
+</script>
+</html>
