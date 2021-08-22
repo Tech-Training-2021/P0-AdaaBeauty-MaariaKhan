@@ -23,10 +23,13 @@ namespace BeautyStore
             fragranceitems.StoreFragranceitems();
             Appliancesitems appliancesitems = new Appliancesitems();
             //appliancesitems.StoreApplianceitems();
+
             SearchSkinCare searchskin = new SearchSkinCare();
             SearchMakeup searchmakeup = new SearchMakeup();
             SearchHairCare searchhair = new SearchHairCare();
             SearchAppliances searchappliances = new SearchAppliances();
+
+            FilterSkincare filterskin = new FilterSkincare();
 
             string opt1 = "";
             string opt2 = "";
@@ -145,7 +148,6 @@ namespace BeautyStore
                         }
                         break;
                     case "7":
-                        searchskin.SkincareList();
                         Console.WriteLine("__________________________________________________________________");
                         Console.WriteLine();
                         Console.WriteLine("Hey! In which category do you wish to aplly filters?");
@@ -164,7 +166,7 @@ namespace BeautyStore
                                 Console.WriteLine("code to be added");
                                 break;
                             case "2":
-                                searchskin.SearchMySkin();
+                                filterskin.FilterMySkin();
                                 break;
                             case "3":
                                 Console.WriteLine("code to be added");
