@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Convert JSON Data to HTML Table</title>
+    <style>
+        th, td, p, input, h3 {
+            font: 15px 'Segoe UI';
+        }
+
+        table, th, td {
+            border: solid 1px #ddd;
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+        }
+
+        th {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    
+    <input type='button' onclick='tableFromJson5()'
+           value='Skincare Table' />
+
+    <p id='showData'></p>
+
+    <p id='msg'></p>
+</body>
+
+<script>
+	// scroll down for ES6 features.
+
+	// using regular methods.
+
+    function tableFromJson5() {
+		// the json data. (you can change the values for output.)
+        // JavaScript source code
+        var myskincare = [{"Toner":"Forest Essentials","Cleanser":"Micellar","Moisturizer":"Simple Kind","Mask":"Snail Sheet Mask"},
+        {"Toner":"Tea Tree","Cleanser":"Moms Co.Natural","Moisturizer":"Revitalift","Mask":"TonyMolly Mask"},
+        {"Toner":"Mamaearth Vitamin C","Cleanser":"Neutrogena","Moisturizer":"Estee Lauder","Mask":"Innisfree Volcanic Pore Clay"},
+        {"Toner":"PIXI Glow Tonic","Cleanser":"Cetaphil","Moisturizer":"Minimalist","Mask":"The Face Shop Real Nature Red Ginseng Face Mask"},
+        {"Toner":"Lakme Absolute Pore Fix Toner","Cleanser":"Plum Green tree","Moisturizer":"Klairs Freshly Juiced","Mask":"Prolixr Detoxifying Sea Algae Mask"},
+        {"Toner":"PIXI Glow Tonic","Cleanser":"Garnier Skin Naturals","Moisturizer":"Clinique Moisture Surge","Mask":"MCaffeine Deep Pore Cleansing Regime"}];
+        // Extract value from table header.
+        // ('Book ID', 'Book Name', 'Category' and 'Price')
+        var col = [];
+        for (var i = 0; i < myskincare.length; i++) {
+            for (var key in myskincare[i]) {
+                if (col.indexOf(key) === -1) {
+                    col.push(key);
+                }
+            }
+        }
+
+        // Create a table.
+        var table = document.createElement("table");
+
+        // Create table header row using the extracted headers above.
+        var tr = table.insertRow(-1);                   // table row.
+
+        for (var i = 0; i < col.length; i++) {
+            var th = document.createElement("th");      // table header.
+            th.innerHTML = col[i];
+            tr.appendChild(th);
+        }
+
+        // add json data to the table as rows.
+        for (var i = 0; i < myskincare.length; i++) {
+
+            tr = table.insertRow(-1);
+
+            for (var j = 0; j < col.length; j++) {
+                var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = myskincare[i][col[j]];
+            }
+        }
+
+        // Now, add the newly created table with json data, to a container.
+        var divShowData = document.getElementById('showData');
+        divShowData.innerHTML = "";
+        divShowData.appendChild(table);
+
+     
+    }
+
+
+</script>
+</html>

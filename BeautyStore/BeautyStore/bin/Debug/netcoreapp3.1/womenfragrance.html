@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Convert JSON Data to HTML Table</title>
+    <style>
+        th, td, p, input, h3 {
+            font: 15px 'Segoe UI';
+        }
+
+        table, th, td {
+            border: solid 1px #ddd;
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+        }
+
+        th {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    
+    <input type='button' onclick='tableFromJson7()'
+           value='WomenFragrance Table' />
+
+    <p id='showData'></p>
+
+    <p id='msg'></p>
+</body>
+
+<script>
+	// scroll down for ES6 features.
+
+	// using regular methods.
+
+    function tableFromJson7() {
+		// the json data. (you can change the values for output.)
+        // JavaScript source code
+        var mywomenfragrance = [ {"Perfume":"Mercedes-Benz Woman Eau De Toilette","bodymists":"The Body Shop Shea Body Mist","deodorants":"NIVEA Women Deodorant"},
+        {"Perfume":"Police To Be Woman Eau De Parfu","bodymists":"Dark Kiss Fragrance Mis","deodorants":"Engage Spell Deodorant For Women"},
+        {"Perfume":"Davidoff Cool Water Wave Woman Eau De Toilette","bodymists":"Body Cupid Rasberry Burst Body Mists","deodorants":"Playboy Wild Women Deodorant Spray"},
+        {"Perfume":"Active Woman Blanche","bodymists":"DIOR J'adore Body Mists","deodorants":"Dove Eventone Deodorant For Women"},
+        {"Perfume":"HUGO Woman Eau De Parfum","bodymists":"Salvatore Ferragamo Incanto Bloom Body Mist","deodorants":"Antonio Banderas Her Golden Secret Deodrant"},
+        {"Perfume":"United Colors of Benetton Colors Rose Women","bodymists":"Beverly Hills Polo Club Premium Body Mis","deodorants":"Guess 1981 Deodorant Body Spray"}];
+
+
+        var col = [];
+        for (var i = 0; i < mywomenfragrance .length; i++) {
+            for (var key in mywomenfragrance [i]) {
+                if (col.indexOf(key) === -1) {
+                    col.push(key);
+                }
+            }
+        }
+
+        // Create a table.
+        var table = document.createElement("table");
+
+        // Create table header row using the extracted headers above.
+        var tr = table.insertRow(-1);                   // table row.
+
+        for (var i = 0; i < col.length; i++) {
+            var th = document.createElement("th");      // table header.
+            th.innerHTML = col[i];
+            tr.appendChild(th);
+        }
+
+        // add json data to the table as rows.
+        for (var i = 0; i < mywomenfragrance.length; i++) {
+
+            tr = table.insertRow(-1);
+
+            for (var j = 0; j < col.length; j++) {
+                var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = mywomenfragrance [i][col[j]];
+            }
+        }
+
+        // Now, add the newly created table with json data, to a container.
+        var divShowData = document.getElementById('showData');
+        divShowData.innerHTML = "";
+        divShowData.appendChild(table);
+
+        
+    }
+
+
+</script>
+</html>
