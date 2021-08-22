@@ -111,3 +111,22 @@ C:\Users\Maaria Khan\OneDrive\Documents\BeautyStore\BeautyStore\obj\Debug\netcor
 C:\Users\Maaria Khan\OneDrive\Documents\BeautyStore\BeautyStore\obj\Debug\netcoreapp3.1\BeautyStore.dll
 C:\Users\Maaria Khan\OneDrive\Documents\BeautyStore\BeautyStore\obj\Debug\netcoreapp3.1\BeautyStore.pdb
 C:\Users\Maaria Khan\OneDrive\Documents\BeautyStore\BeautyStore\obj\Debug\netcoreapp3.1\BeautyStore.genruntimeconfig.cache
+C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\bin\Debug\netcoreapp3.1\BeautyStore.exe
+C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\bin\Debug\netcoreapp3.1\BeautyStore.deps.json
+C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\bin\Debug\netcoreapp3.1\BeautyStore.runtimeconfig.json
+C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\bin\Debug\netcoreapp3.1\BeautyStore.runtimeconfig.dev.json
+C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\bin\Debug\netcoreapp3.1\BeautyStore.dll
+C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\bin\Debug\netcoreapp3.1\BeautyStore.pdb
+C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\bin\Debug\netcoreapp3.1\xunit.abstractions.dll
+C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\bin\Debug\netcoreapp3.1\xunit.assert.dll
+C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\bin\Debug\netcoreapp3.1\xunit.core.dll
+C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\bin\Debug\netcoreapp3.1\xunit.execution.dotnet.dll
+C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\obj\Debug\netcoreapp3.1\BeautyStore.csproj.AssemblyReference.cache
+C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\obj\Debug\netcoreapp3.1\BeautyStore.AssemblyInfoInputs.cache
+C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\obj\Debug\netcoreapp3.1\BeautyStore.AssemblyInfo.cs
+C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\obj\Debug\netcoreapp3.1\BeautyStore.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\obj\Debug\netcoreapp3.1\BeautyStore.csproj.CopyComplete
+C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\obj\Debug\netcoreapp3.1\BeautyStore.dll
+C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\obj\Debug\netcoreapp3.1\BeautyStore.pdb
+C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\obj\Debug\netcoreapp3.1\BeautyStore.genruntimeconfig.cache

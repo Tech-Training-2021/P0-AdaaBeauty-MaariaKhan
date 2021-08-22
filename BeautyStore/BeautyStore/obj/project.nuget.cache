@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ky4TCOSKI/Dsm0eyNMCzbgHaxlLa3xeWJYEDY3F9P8zX2fl5uVyeAcLBnwlgiffSD6syiYcuZL/PcpV+umO04Q==",
+  "dgSpecHash": "IeHlapM+/mF48XxMhNUvG0ZI+fXl6eqd1HJ+uWeX5WPRNM9MajKQFHLo68WRWTKiTAe3V6UScLbMo9XzywLqMg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Maaria Khan\\OneDrive\\Documents\\BeautyStore\\BeautyStore\\BeautyStore.csproj",
+  "projectFilePath": "C:\\Users\\Maaria Khan\\Downloads\\BeautyStore (3)\\BeautyStore\\BeautyStore\\BeautyStore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Maaria Khan\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Maaria Khan\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
