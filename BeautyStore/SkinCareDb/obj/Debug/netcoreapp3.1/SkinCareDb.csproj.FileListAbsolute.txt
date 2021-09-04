@@ -1,0 +1,10 @@
+C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\SkinCareDb\bin\Debug\netcoreapp3.1\SkinCareDb.deps.json
+C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\SkinCareDb\bin\Debug\netcoreapp3.1\SkinCareDb.dll
+C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\SkinCareDb\bin\Debug\netcoreapp3.1\SkinCareDb.pdb
+C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\SkinCareDb\obj\Debug\netcoreapp3.1\SkinCareDb.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\SkinCareDb\obj\Debug\netcoreapp3.1\SkinCareDb.AssemblyInfoInputs.cache
+C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\SkinCareDb\obj\Debug\netcoreapp3.1\SkinCareDb.AssemblyInfo.cs
+C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\SkinCareDb\obj\Debug\netcoreapp3.1\SkinCareDb.csproj.CoreCompileInputs.cache
+C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\SkinCareDb\obj\Debug\netcoreapp3.1\SkinCareDb.dll
+C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\SkinCareDb\obj\Debug\netcoreapp3.1\SkinCareDb.pdb
+C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\SkinCareDb\obj\Debug\netcoreapp3.1\SkinCareDb.csproj.AssemblyReference.cache

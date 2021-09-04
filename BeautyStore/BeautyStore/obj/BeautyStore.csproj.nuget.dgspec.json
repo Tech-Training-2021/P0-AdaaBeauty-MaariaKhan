@@ -1,17 +1,89 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Maaria Khan\\Downloads\\BeautyStore (3)\\BeautyStore\\BeautyStore\\BeautyStore.csproj": {}
+    "C:\\Users\\Maaria Khan\\myproj\\P0-AdaaBeauty-MaariaKhan\\BeautyStore\\BeautyStore\\BeautyStore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Maaria Khan\\Downloads\\BeautyStore (3)\\BeautyStore\\BeautyStore\\BeautyStore.csproj": {
+    "C:\\Users\\Maaria Khan\\myproj\\P0-AdaaBeauty-MaariaKhan\\BeautyStore\\BeautyStore\\BeautyStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Maaria Khan\\Downloads\\BeautyStore (3)\\BeautyStore\\BeautyStore\\BeautyStore.csproj",
+        "projectUniqueName": "C:\\Users\\Maaria Khan\\myproj\\P0-AdaaBeauty-MaariaKhan\\BeautyStore\\BeautyStore\\BeautyStore.csproj",
         "projectName": "BeautyStore",
-        "projectPath": "C:\\Users\\Maaria Khan\\Downloads\\BeautyStore (3)\\BeautyStore\\BeautyStore\\BeautyStore.csproj",
+        "projectPath": "C:\\Users\\Maaria Khan\\myproj\\P0-AdaaBeauty-MaariaKhan\\BeautyStore\\BeautyStore\\BeautyStore.csproj",
         "packagesPath": "C:\\Users\\Maaria Khan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Maaria Khan\\Downloads\\BeautyStore (3)\\BeautyStore\\BeautyStore\\obj\\",
+        "outputPath": "C:\\Users\\Maaria Khan\\myproj\\P0-AdaaBeauty-MaariaKhan\\BeautyStore\\BeautyStore\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Maaria Khan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\Maaria Khan\\myproj\\P0-AdaaBeauty-MaariaKhan\\BeautyStore\\SkinCareDb\\SkinCareDb.csproj": {
+                "projectPath": "C:\\Users\\Maaria Khan\\myproj\\P0-AdaaBeauty-MaariaKhan\\BeautyStore\\SkinCareDb\\SkinCareDb.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Maaria Khan\\myproj\\P0-AdaaBeauty-MaariaKhan\\BeautyStore\\SkinCareDb\\SkinCareDb.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Maaria Khan\\myproj\\P0-AdaaBeauty-MaariaKhan\\BeautyStore\\SkinCareDb\\SkinCareDb.csproj",
+        "projectName": "SkinCareDb",
+        "projectPath": "C:\\Users\\Maaria Khan\\myproj\\P0-AdaaBeauty-MaariaKhan\\BeautyStore\\SkinCareDb\\SkinCareDb.csproj",
+        "packagesPath": "C:\\Users\\Maaria Khan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Maaria Khan\\myproj\\P0-AdaaBeauty-MaariaKhan\\BeautyStore\\SkinCareDb\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Maaria Khan\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,13 +112,9 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
-            "Newtonsoft.Json": {
+            "System.Data.SqlClient": {
               "target": "Package",
-              "version": "[13.0.1, )"
-            },
-            "xunit": {
-              "target": "Package",
-              "version": "[2.4.1, )"
+              "version": "[4.8.2, )"
             }
           },
           "imports": [
@@ -64,7 +132,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -6,13 +6,13 @@ namespace BeautyStore
 {
     class SearchSkinCare:Skincareitem
     {
-        protected List<string> allskincarename = new List<string>();
-        protected List<double> allskincareprice = new List<double>();
+        List<string> allskincarename = new List<string>();
+        List<double> allskincareprice = new List<double>();
         public string myproduct = "";
         public string myitemname = "";
         public string opt1 = "";
         public string opt2 = "";
-        public int qnty = 0;
+        public int qnt = 0;
         Adaa adaa = new Adaa();
         public  void SkincareList()
         {
@@ -95,32 +95,52 @@ namespace BeautyStore
                     {
                         case "1":
                             Console.WriteLine("Please enter the quantity:");
-                            qnty = int.Parse(Console.ReadLine());
+                            qnt = int.Parse(Console.ReadLine());
                             if (i < 6)
                             {
-                                TonerCart(i+1.ToString(), qnty);
+                                switch (i)
+                                {
+                                    case 0:
+                                        TonerCart("1", qnt);
+                                        break;
+                                    case 1:
+                                        TonerCart("2", qnt);
+                                        break;
+                                    case 2:
+                                        TonerCart("3", qnt);
+                                        break;
+                                    case 3:
+                                        TonerCart("4", qnt);
+                                        break;
+                                    case 4:
+                                        TonerCart("5", qnt);
+                                        break;
+                                    case 5:
+                                        TonerCart("6", qnt);
+                                        break;
+                                }
                             }
                             else if((i > 5) && (i < 12))
                             {
                                 switch (i)
                                 {
                                     case 6:
-                                        CleanserCart(1.ToString(), qnty);
+                                        CleanserCart("1", qnt);
                                         break;
                                     case 7:
-                                        CleanserCart(2.ToString(), qnty);
+                                        CleanserCart("2", qnt);
                                         break;
                                     case 8:
-                                        CleanserCart(3.ToString(), qnty);
+                                        CleanserCart("3", qnt);
                                         break;
                                     case 9:
-                                        CleanserCart(4.ToString(), qnty);
+                                        CleanserCart("4", qnt);
                                         break;
                                     case 10:
-                                        CleanserCart(5.ToString(), qnty);
+                                        CleanserCart("5", qnt);
                                         break;
                                     case 11:
-                                        CleanserCart(6.ToString(), qnty);
+                                        CleanserCart("6", qnt);
                                         break;
                                 }
                             }
@@ -129,22 +149,22 @@ namespace BeautyStore
                                 switch (i)
                                 {
                                     case 12:
-                                        MoisturizerCart(1.ToString(), qnty);
+                                        MoisturizerCart("1", qnt);
                                         break;
                                     case 13:
-                                        MoisturizerCart(2.ToString(), qnty);
+                                        MoisturizerCart("2", qnt);
                                         break;
                                     case 14:
-                                        MoisturizerCart(3.ToString(), qnty);
+                                        MoisturizerCart("3", qnt);
                                         break;
                                     case 15:
-                                        MoisturizerCart(4.ToString(), qnty);
+                                        MoisturizerCart("4", qnt);
                                         break;
                                     case 16:
-                                        MoisturizerCart(5.ToString(), qnty);
+                                        MoisturizerCart("5", qnt);
                                         break;
                                     case 17:
-                                        MoisturizerCart(6.ToString(), qnty);
+                                        MoisturizerCart("6", qnt);
                                         break;
                                 }
                             }
@@ -153,22 +173,22 @@ namespace BeautyStore
                                 switch (i)
                                 {
                                     case 18:
-                                        MaskCart(1.ToString(), qnty);
+                                        MaskCart("1", qnt);
                                         break;
                                     case 19:
-                                        MaskCart(2.ToString(), qnty);
+                                        MaskCart("2", qnt);
                                         break;
                                     case 20:
-                                        MaskCart(3.ToString(), qnty);
+                                        MaskCart("3", qnt);
                                         break;
                                     case 21:
-                                        MaskCart(4.ToString(), qnty);
+                                        MaskCart("4", qnt);
                                         break;
                                     case 22:
-                                        MaskCart(5.ToString(), qnty);
+                                        MaskCart("5", qnt);
                                         break;
                                     case 23:
-                                        MaskCart(6.ToString(), qnty);
+                                        MaskCart("6", qnt);
                                         break;
                                 }
                             }

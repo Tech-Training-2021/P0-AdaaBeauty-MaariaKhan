@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data.SqlClient;
+using System.Data;
 using Newtonsoft.Json;
 using System.IO;
+using SkinCareDb;
 
 namespace BeautyStore
 {
@@ -15,6 +18,10 @@ namespace BeautyStore
         HistoryCart placedorder;
         HistoryCart history;
 
+        public string conString;
+        public SqlConnection connection;
+        public SqlCommand command;
+
         public string opt3 = "";
         public string opt4 = "";
         public string opt5 = "";
@@ -23,6 +30,7 @@ namespace BeautyStore
         string mykey = "";
         int myvalue = 0;
         double price;
+        double grandtotal = 0;
 
         TonerDetails t1;
         TonerDetails t2;
@@ -133,294 +141,8 @@ namespace BeautyStore
         char ch3;
         public void StoreSkincareitem()
         {
-            TonerDetails toner1 = new TonerDetails()
-            {
-                Tonername = "Forest Essentials",
-                Tonerprice = 750
-            };
-            TonerDetails toner2 = new TonerDetails()
-            {
-                Tonername = "Tea Tree",
-                Tonerprice = 450
-            };
-            TonerDetails toner3 = new TonerDetails()
-            {
-                Tonername = "Mamaearth Vitamin C",
-                Tonerprice = 1500
-            };
-            TonerDetails toner4 = new TonerDetails()
-            {
-                Tonername = "PIXI Glow Tonic",
-                Tonerprice = 2000
-            };
-            TonerDetails toner5 = new TonerDetails()
-            {
-                Tonername = "Lakme Absolute Pore Fix Toner",
-                Tonerprice = 850
-            };
-            TonerDetails toner6 = new TonerDetails()
-            {
-                Tonername = "Biotique Bio Cucumber",
-                Tonerprice = 350
-            };
-            //Cleanser json
-            CleanserDetails cleanser1 = new CleanserDetails()
-            {
-                Cleansername= "Micellar",
-                Cleanserprice=200
-
-            };
-            CleanserDetails cleanser2 = new CleanserDetails()
-            {
-                Cleansername = "Moms Co.Natural",
-                Cleanserprice = 550
-
-            };
-            CleanserDetails cleanser3 = new CleanserDetails()
-            {
-                Cleansername = "Neutrogena",
-                Cleanserprice = 700
-
-            };
-            CleanserDetails cleanser4 = new CleanserDetails()
-            {
-                Cleansername = "Cetaphil",
-                Cleanserprice = 1200
-
-            };
-            CleanserDetails cleanser5  = new CleanserDetails()
-            {
-                Cleansername = "Plum Green tree",
-                Cleanserprice = 650
-
-            };
-            CleanserDetails cleanser6 = new CleanserDetails()
-            {
-                Cleansername = "Garnier Skin Naturals",
-                Cleanserprice = 800
-
-            };
-
-            MoisturizerDetails moisturizer1 = new MoisturizerDetails()
-            {
-                Moisturizername= "Simple Kind",
-                Moisturizerprice = 1500
-
-            };
-            MoisturizerDetails moisturizer2 = new MoisturizerDetails()
-            {
-                Moisturizername = "Revitalift",
-                Moisturizerprice = 2500
-
-            };
-            MoisturizerDetails moisturizer3 = new MoisturizerDetails()
-            {
-                Moisturizername = "Estee Lauder",
-                Moisturizerprice = 700
-
-            };
-            MoisturizerDetails moisturizer4 = new MoisturizerDetails()
-            {
-                Moisturizername = "Minimalist",
-                Moisturizerprice = 550
-
-            };
-            MoisturizerDetails moisturizer5 = new MoisturizerDetails()
-            {
-                Moisturizername = "Klairs Freshly Juiced",
-                Moisturizerprice = 830
-
-            };
-            MoisturizerDetails moisturizer6 = new MoisturizerDetails()
-            {
-                Moisturizername = "Clinique Moisture Surge",
-                Moisturizerprice = 1200
-
-            };
-
-            MaskDetails mask1 = new MaskDetails()
-            {
-                Maskname= "Snail Sheet Mask",
-                Maskprice= 150
-
-            };
-            MaskDetails mask2 = new MaskDetails()
-            {
-                Maskname = "TonyMolly Mask",
-                Maskprice = 750
-
-            };
-            MaskDetails mask3 = new MaskDetails()
-            {
-                Maskname = "Innisfree Volcanic Pore Clay",
-                Maskprice = 1300
-
-            };
-            MaskDetails mask4 = new MaskDetails()
-            {
-                Maskname = "The Face Shop Real Nature Red Ginseng Face Mask",
-                Maskprice = 600
-
-            };
-            MaskDetails mask5 = new MaskDetails()
-            {
-                Maskname = "Prolixr Detoxifying Sea Algae Mask",
-                Maskprice = 1500
-
-            };
-            MaskDetails mask6 = new MaskDetails()
-            {
-                Maskname = "MCaffeine Deep Pore Cleansing Regime",
-                Maskprice = 370
-
-            };
-
-            //toner file objects serializing 
-            string mytoner1 = JsonConvert.SerializeObject(toner1);
-            File.WriteAllText(@"tonerdetails.json", mytoner1);
-            string mytoner2 = JsonConvert.SerializeObject(toner2);
-            File.AppendAllText(@"tonerdetails.json", mytoner2);
-            string mytoner3 = JsonConvert.SerializeObject(toner3);
-            File.AppendAllText(@"tonerdetails.json", mytoner3);
-            string mytoner4 = JsonConvert.SerializeObject(toner4);
-            File.AppendAllText(@"tonerdetails.json", mytoner4);
-            string mytoner5 = JsonConvert.SerializeObject(toner5);
-            File.AppendAllText(@"tonerdetails.json", mytoner5);
-            string mytoner6 = JsonConvert.SerializeObject(toner6);
-            File.AppendAllText(@"tonerdetails.json", mytoner6);
-
-            string mycleanser1 = JsonConvert.SerializeObject(cleanser1);
-            File.WriteAllText(@"cleanserdetails.json", mycleanser1);
-            string mycleanser2 = JsonConvert.SerializeObject(cleanser2);
-            File.AppendAllText(@"cleanserdetails.json", mycleanser2);
-            string mycleanser3 = JsonConvert.SerializeObject(cleanser3);
-            File.AppendAllText(@"cleanserdetails.json", mycleanser3);
-            string mycleanser4 = JsonConvert.SerializeObject(cleanser4);
-            File.AppendAllText(@"cleanserdetails.json", mycleanser4);
-            string mycleanser5 = JsonConvert.SerializeObject(cleanser5);
-            File.AppendAllText(@"cleanserdetails.json", mycleanser5);
-            string mycleanser6 = JsonConvert.SerializeObject(cleanser6);
-            File.AppendAllText(@"cleanserdetails.json", mycleanser6);
-
-            string mymoisturizer1 = JsonConvert.SerializeObject(moisturizer1);
-            File.WriteAllText(@"moisturizerdetails.json", mymoisturizer1);
-            string mymoisturizer2 = JsonConvert.SerializeObject(moisturizer2);
-            File.AppendAllText(@"moisturizerdetails.json", mymoisturizer2);
-            string mymoisturizer3 = JsonConvert.SerializeObject(moisturizer3);
-            File.AppendAllText(@"moisturizer.json", mymoisturizer3);
-            string mymoisturizer4 = JsonConvert.SerializeObject(moisturizer4);
-            File.AppendAllText(@"moisturizerdetails.json", mymoisturizer4);
-            string mymoisturizer5 = JsonConvert.SerializeObject(moisturizer5);
-            File.AppendAllText(@"moisturizerdetails.json", mymoisturizer5);
-            string mymoisturizer6 = JsonConvert.SerializeObject(moisturizer6);
-            File.AppendAllText(@"moisturizerdetails.json", mymoisturizer6);
-
-            string mymask1 = JsonConvert.SerializeObject(mask1);
-            File.WriteAllText(@"maskdetails.json", mymask1);
-            string mymask2 = JsonConvert.SerializeObject(mask2);
-            File.AppendAllText(@"maskdetails.json", mymask2);
-            string mymask3 = JsonConvert.SerializeObject(mask3);
-            File.AppendAllText(@"maskdetails.json", mymask3);
-            string mymask4 = JsonConvert.SerializeObject(mask4);
-            File.AppendAllText(@"maskdetails.json", mymask4);
-            string mymask5 = JsonConvert.SerializeObject(mask5);
-            File.AppendAllText(@"maskdetails.json", mymask5);
-            string mymask6 = JsonConvert.SerializeObject(mask6);
-            File.AppendAllText(@"maskdetails.json", mymask6);
-
-
-
-
-
-
-
-            //desrializing toner file objects
-            t1 = JsonConvert.DeserializeObject<TonerDetails>(mytoner1);
-            t2 = JsonConvert.DeserializeObject<TonerDetails>(mytoner2);
-            t3 = JsonConvert.DeserializeObject<TonerDetails>(mytoner3);
-            t4 = JsonConvert.DeserializeObject<TonerDetails>(mytoner4);
-            t5 = JsonConvert.DeserializeObject<TonerDetails>(mytoner5);
-            t6 = JsonConvert.DeserializeObject<TonerDetails>(mytoner6);
-
-            c1 = JsonConvert.DeserializeObject<CleanserDetails>(mycleanser1);
-            c2 = JsonConvert.DeserializeObject<CleanserDetails>(mycleanser2);
-            c3 = JsonConvert.DeserializeObject<CleanserDetails>(mycleanser3);
-            c4 = JsonConvert.DeserializeObject<CleanserDetails>(mycleanser4);
-            c5 = JsonConvert.DeserializeObject<CleanserDetails>(mycleanser5);
-            c6 = JsonConvert.DeserializeObject<CleanserDetails>(mycleanser6);
-
-            mo1 = JsonConvert.DeserializeObject<MoisturizerDetails>(mymoisturizer1);
-            mo2 = JsonConvert.DeserializeObject<MoisturizerDetails>(mymoisturizer2);
-            mo3 = JsonConvert.DeserializeObject<MoisturizerDetails>(mymoisturizer3);
-            mo4 = JsonConvert.DeserializeObject<MoisturizerDetails>(mymoisturizer4);
-            mo5 = JsonConvert.DeserializeObject<MoisturizerDetails>(mymoisturizer5);
-            mo6 = JsonConvert.DeserializeObject<MoisturizerDetails>(mymoisturizer6);
-
-            ma1 = JsonConvert.DeserializeObject<MaskDetails>(mymask1);
-            ma2 = JsonConvert.DeserializeObject<MaskDetails>(mymask2);
-            ma3 = JsonConvert.DeserializeObject<MaskDetails>(mymask3);
-            ma4 = JsonConvert.DeserializeObject<MaskDetails>(mymask4);
-            ma5 = JsonConvert.DeserializeObject<MaskDetails>(mymask5);
-            ma6 = JsonConvert.DeserializeObject<MaskDetails>(mymask6);
-
-
-            //accessing toners
-
-            tone1 = t1.Tonername;
-            toner1price = t1.Tonerprice;
-            tone2 = t2.Tonername;
-            toner2price = t2.Tonerprice;
-            tone3 = t3.Tonername;
-            toner3price = t3.Tonerprice;
-            tone4 = t4.Tonername;
-            toner4price = t1.Tonerprice;
-            tone5 = t5.Tonername;
-            toner5price = t1.Tonerprice;
-            tone6 = t6.Tonername;
-            toner6price = t1.Tonerprice;
-
-            //accessing cleansers
-            cleanse1 = c1.Cleansername;
-            cleanser1price = c1.Cleanserprice;
-            cleanse2 = c2.Cleansername;
-            cleanser2price = c2.Cleanserprice;
-            cleanse3 = c3.Cleansername;
-            cleanser3price = c3.Cleanserprice;
-            cleanse4 = c4.Cleansername;
-            cleanser4price = c4.Cleanserprice;
-            cleanse5 = c5.Cleansername;
-            cleanser5price = c5.Cleanserprice;
-            cleanse6 = c6.Cleansername;
-            cleanser6price = c6.Cleanserprice;
-
-            //accessing moisturizers
-            moisturize1 = mo1.Moisturizername;
-            moisturizer1price = mo1.Moisturizerprice;
-            moisturize2 = mo2.Moisturizername;
-            moisturizer2price = mo2.Moisturizerprice;
-            moisturize3 = mo3.Moisturizername;
-            moisturizer3price = mo3.Moisturizerprice;
-            moisturize4 = mo4.Moisturizername;
-            moisturizer4price = mo4.Moisturizerprice;
-            moisturize5 = mo5.Moisturizername;
-            moisturizer5price = mo5.Moisturizerprice;
-            moisturize6 = mo6.Moisturizername;
-            moisturizer6price = mo6.Moisturizerprice;
-
-            //accessing mask
-            mas1=ma1.Maskname;
-            mask1price=ma1.Maskprice;
-            mas2=ma2.Maskname;
-            mask2price=ma2.Maskprice;
-            mas3=ma3.Maskname;
-            mask3price=ma3.Maskprice;
-            mas4=ma4.Maskname;
-            mask4price=ma4.Maskprice;
-            mas5=ma5.Maskname;
-            mask5price=ma5.Maskprice;
-            mas6=ma6.Maskname;
-            mask6price=ma6.Maskprice;
-
+            conString= "Server = tcp:marizserver.database.windows.net,1433; Initial Catalog = BeautyStore; Persist Security Info = False; User ID = mariz; Password = Maggi123; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30";
+           
         }
 
         public void MySkin(string opt2)
@@ -431,13 +153,8 @@ namespace BeautyStore
                 case "1":
                     Console.WriteLine("_________________ ");
                     Console.WriteLine();
-                    Console.WriteLine("     1.Forest Essentials      ");
-                    Console.WriteLine("     2.Tea Tree       ");
-                    Console.WriteLine("     3.Mamaearth Vitamin C       ");
-                    Console.WriteLine("     4.PIXI Glow Tonic      ");
-                    Console.WriteLine("     5.Lakme Absolute Pore Fix Toner      ");
-                    Console.WriteLine("     6.Kama Ayurveda      ");
-
+                    SkinData.GetToner(conString, out connection, out command);
+                    
                     Console.WriteLine("_________________     ______________________     _____________________     ___________________    __________________");
                     Console.WriteLine("Select the item you want to buy:");
                     opt3 = Console.ReadLine();
@@ -448,52 +165,37 @@ namespace BeautyStore
                 case "2":
                     Console.WriteLine("_________________ ");
                     Console.WriteLine();
-                    Console.WriteLine("     1.Micellar      ");
-                    Console.WriteLine("     2.Moms Co.Natural   ");
-                    Console.WriteLine("     3.Neutrogena    ");
-                    Console.WriteLine("     4.Cetaphil    ");
-                    Console.WriteLine("     5.Plum Green tree    ");
-                    Console.WriteLine("     6.Garnier Skin Naturals    ");
+                    SkinData.GetCleanser(conString, out connection, out command);
+
                     Console.WriteLine("_________________     ______________________     _____________________     ___________________    __________________");
                     Console.WriteLine("Select the item you want to buy:");
                     opt3 = Console.ReadLine();
                     Console.WriteLine("Select the quantity:");
                     qnty = int.Parse(Console.ReadLine());
-                    //CleanserCart(opt3, qnty);
+                    CleanserCart(opt3, qnty);
                     break;
                 case "3":
                     Console.WriteLine("_________________ ");
                     Console.WriteLine();
-                    Console.WriteLine("     1.Simple Kind      ");
-                    Console.WriteLine("     2.Revitalift   ");
-                    Console.WriteLine("     3.Estee Lauder    ");
-                    Console.WriteLine("     4.Minimalist      ");
-                    Console.WriteLine("     5.Klairs Freshly Juiced   ");
-                    Console.WriteLine("     6.Clinique Moisture Surge    ");
-
+                    SkinData.GetMoisturizer(conString, out connection, out command);
                     Console.WriteLine("_________________     ______________________     _____________________     ___________________    __________________");
                     Console.WriteLine("Select the item you want to buy:");
                     opt3 = Console.ReadLine();
                     Console.WriteLine("Select the quantity:");
                     qnty = int.Parse(Console.ReadLine());
-                    //MoisturizerCart(opt3, qnty);
+                    MoisturizerCart(opt3, qnty);
                     break;
                 case "4":
                     Console.WriteLine("_________________ ");
                     Console.WriteLine();
-                    Console.WriteLine("     1.Snail Sheet Mask     ");
-                    Console.WriteLine("     2.TonyMolly Mask   ");
-                    Console.WriteLine("     3.Innisfree Volcanic Pore Clay   ");
-                    Console.WriteLine("     4.The Face Shop Real Nature Red Ginseng Face Mask     ");
-                    Console.WriteLine("     5.Prolixr Detoxifying Sea Algae Mask   ");
-                    Console.WriteLine("     6.MCaffeine Deep Pore Cleansing Regime   ");
+                    SkinData.GetMask(conString, out connection, out command);
 
                     Console.WriteLine("_________________     ______________________     _____________________     ___________________    __________________");
                     Console.WriteLine("Select the item you want to buy:");
                     opt3 = Console.ReadLine();
                     Console.WriteLine("Select the quantity:");
                     qnty = int.Parse(Console.ReadLine());
-                    //MaskCart(opt3, qnty);
+                    MaskCart(opt3, qnty);
                     break;
                 default:
                     Console.WriteLine("Sorry you entered the wrong option! ");
@@ -503,7 +205,9 @@ namespace BeautyStore
         }
         public void TonerCart(string opt3,int qnty)
         {
-                Console.WriteLine("Press 'y' to add product in cart or press any character to go exit:");
+                Console.WriteLine("Press 'y' to add product in cart:");
+                Console.WriteLine("Press 'e' character to go exit:");
+                Console.WriteLine("Press 'm' character to go back to main menu:");
                 ch1 = Convert.ToChar(Console.ReadLine());
 
                 if (ch1 == 'y')
@@ -653,21 +357,21 @@ namespace BeautyStore
                                 Price = price
 
                             };
-                            
+                            myorder = JsonConvert.SerializeObject(order);
+                            if (counter == 1) { File.WriteAllText(@"order.json", myorder); }
+                            else if (counter > 1) { File.AppendAllText(@"order.json", myorder); }
+                            cart = JsonConvert.DeserializeObject<Orders>(myorder);
+
 
                         }
-                        myorder = JsonConvert.SerializeObject(order);
-                        if (counter == 1) { File.WriteAllText(@"order.json", myorder); }
-                        else if (counter > 1) { File.AppendAllText(@"order.json", myorder); }
-                        cart = JsonConvert.DeserializeObject<Orders>(myorder);
-
-                        //cartitems = cart.Productname;
-                        //cartquantity = cart.Quantity;
                         itemnamecart.Add(cart.Productname);
                         itemquantitycart.Add(cart.Quantity);
                         itempricecart.Add(cart.Price);
+                        grandtotal = grandtotal + cart.Price;
+
 
                         Console.WriteLine();
+                       
 
 
                         //quantity asked is within or equal to available quantity
@@ -686,11 +390,14 @@ namespace BeautyStore
                                 Console.WriteLine($"                   {itemnamecart[i]}           |                {itemquantitycart[i]}             |           {itempricecart[i]} ");
                                 Console.WriteLine();
                             }
+                            Console.WriteLine($"                       GRAND TOTAL                  |                  {grandtotal}");
                             
                             Console.WriteLine("_______________________________________________________________________________");
                             Console.WriteLine("If you want to remove item from cart press r:");
                             Console.WriteLine("If you want to place order press p:");
                             Console.WriteLine("If you want to continue shopping press c:");
+                            Console.WriteLine("If you want to back to main menu press m:");
+                            Console.WriteLine("If you want to go exit press e:");
                             ch3 = Convert.ToChar(Console.ReadLine());
                             if (ch3 == 'p')
                             {
@@ -730,7 +437,7 @@ namespace BeautyStore
                                 switch (opt5)
                                 {
                                      case "1":
-                                         Console.WriteLine("**************CART ITEMS******************");
+                                         Console.WriteLine("**************ORDER HISTORY******************");
                                          Console.WriteLine("_______________________________________________________________________________");
                                          Console.WriteLine();
                                          Console.WriteLine("                     Item Name                   |         Item quantity         |         Item Price   ");
@@ -747,7 +454,7 @@ namespace BeautyStore
                                          mystore.MyStore();
                                          break;
                                      case "3":
-                                         MySkin(opt3);
+                                         MySkin("1");
                                          break;
 
                                 }
@@ -771,17 +478,28 @@ namespace BeautyStore
                                 }
                                 else if (opt4 == "2")
                                 {
-                                    MySkin(opt3);
+                                    MySkin("1");
 
                                 }
 
                             }
                             else if(ch3=='c')
                             {
-                                MySkin(opt3);
+                                MySkin("1");
 
 
                             }
+                            else if (ch3 == 'm')
+                            {
+                                mystore.MyStore();
+
+                            }
+                            else if (ch3 == 'e')
+                            {
+                               adaa.LogoutAdaa();
+
+                            }
+
                             else
                             {
                                 Console.WriteLine("Incorrect character!");
@@ -791,7 +509,7 @@ namespace BeautyStore
                         }
                         else if (ch2 == 'c')
                         {
-                            MySkin(opt3);
+                            MySkin("1");
 
                         }
                         else
@@ -804,7 +522,12 @@ namespace BeautyStore
                     
                     
                 }
-                else
+                else if(ch1=='m')
+                {
+                    mystore.MyStore();
+
+                }
+                else if(ch1=='e')
                 {
                     adaa.LogoutAdaa();
                 }
@@ -814,7 +537,9 @@ namespace BeautyStore
 
         public void CleanserCart(string opt3, int qnty)
         {
-            Console.WriteLine("Press 'y' to add product in cart or press any character to go exit:");
+            Console.WriteLine("Press 'y' to add product in cart:");
+            Console.WriteLine("Press 'e' character to go exit:");
+            Console.WriteLine("Press 'm' character to go back to main menu:");
             ch1 = Convert.ToChar(Console.ReadLine());
 
             if (ch1 == 'y')
@@ -964,19 +689,19 @@ namespace BeautyStore
                             Price = price
 
                         };
+                        myorder = JsonConvert.SerializeObject(order);
+                        if (counter == 1) { File.WriteAllText(@"order.json", myorder); }
+                        else if (counter > 1) { File.AppendAllText(@"order.json", myorder); }
+                        cart = JsonConvert.DeserializeObject<Orders>(myorder);
 
 
                     }
-                    myorder = JsonConvert.SerializeObject(order);
-                    if (counter == 1) { File.WriteAllText(@"order.json", myorder); }
-                    else if (counter > 1) { File.AppendAllText(@"order.json", myorder); }
-                    cart = JsonConvert.DeserializeObject<Orders>(myorder);
+                    
 
-                    //cartitems = cart.Productname;
-                    //cartquantity = cart.Quantity;
                     itemnamecart.Add(cart.Productname);
                     itemquantitycart.Add(cart.Quantity);
                     itempricecart.Add(cart.Price);
+                    grandtotal = grandtotal + cart.Price;
 
                     Console.WriteLine();
 
@@ -984,6 +709,7 @@ namespace BeautyStore
                     //quantity asked is within or equal to available quantity
                     Console.WriteLine("Hurrah! Item added successfully in cart!");
                     Console.WriteLine("Press 'y' to view cart or press 'c' to continue shopping:");
+                    Console.WriteLine("Press 'm' Go back to main menu:");
                     ch2 = Convert.ToChar(Console.ReadLine());
                     if (ch2 == 'y')
                     {
@@ -997,11 +723,14 @@ namespace BeautyStore
                             Console.WriteLine($"                   {itemnamecart[i]}           |                {itemquantitycart[i]}             |           {itempricecart[i]} ");
                             Console.WriteLine();
                         }
+                        Console.WriteLine($"                       GRAND TOTAL                  |                  {grandtotal}");
 
                         Console.WriteLine("_______________________________________________________________________________");
                         Console.WriteLine("If you want to remove item from cart press r:");
                         Console.WriteLine("If you want to place order press p:");
                         Console.WriteLine("If you want to continue shopping press c:");
+                        Console.WriteLine("If you want to back to main menu press m:");
+                        Console.WriteLine("If you want to go exit press e:");
                         ch3 = Convert.ToChar(Console.ReadLine());
                         if (ch3 == 'p')
                         {
@@ -1058,7 +787,7 @@ namespace BeautyStore
                                     mystore.MyStore();
                                     break;
                                 case "3":
-                                    MySkin(opt3);
+                                    MySkin("2");
                                     break;
 
                             }
@@ -1082,16 +811,25 @@ namespace BeautyStore
                             }
                             else if (opt4 == "2")
                             {
-                                MySkin(opt3);
+                                MySkin("2");
 
                             }
 
                         }
                         else if (ch3 == 'c')
                         {
-                            MySkin(opt3);
+                            MySkin("2");
 
 
+                        }
+                        else if (ch3 == 'm')
+                        {
+                            mystore.MyStore();
+
+                        }
+                        else if (ch3 == 'e')
+                        {
+                            adaa.LogoutAdaa();
                         }
                         else
                         {
@@ -1102,7 +840,12 @@ namespace BeautyStore
                     }
                     else if (ch2 == 'c')
                     {
-                        MySkin(opt3);
+                        MySkin("2");
+
+                    }
+                    else if (ch2 == 'm')
+                    {
+                        mystore.MyStore();
 
                     }
                     else
@@ -1115,7 +858,11 @@ namespace BeautyStore
 
 
             }
-            else
+            else if (ch1 == 'm')
+            {
+                mystore.MyStore();
+            }
+            else if(ch1=='e')
             {
                 adaa.LogoutAdaa();
             }
@@ -1124,7 +871,10 @@ namespace BeautyStore
 
         public void MoisturizerCart(string opt3, int qnty)
         {
-            Console.WriteLine("Press 'y' to add product in cart or press any character to go exit:");
+            Console.WriteLine("Press 'y' to add product in cart:");
+            Console.WriteLine("Press 'e' character to go exit:");
+            Console.WriteLine("Press 'm' character to go to main menu:");
+
             ch1 = Convert.ToChar(Console.ReadLine());
 
             if (ch1 == 'y')
@@ -1274,19 +1024,19 @@ namespace BeautyStore
                             Price = price
 
                         };
-
+                        myorder = JsonConvert.SerializeObject(order);
+                        if (counter == 1) { File.WriteAllText(@"order.json", myorder); }
+                        else if (counter > 1) { File.AppendAllText(@"order.json", myorder); }
+                        cart = JsonConvert.DeserializeObject<Orders>(myorder);
 
                     }
-                    myorder = JsonConvert.SerializeObject(order);
-                    if (counter == 1) { File.WriteAllText(@"order.json", myorder); }
-                    else if (counter > 1) { File.AppendAllText(@"order.json", myorder); }
-                    cart = JsonConvert.DeserializeObject<Orders>(myorder);
-
+                    
                     //cartitems = cart.Productname;
                     //cartquantity = cart.Quantity;
                     itemnamecart.Add(cart.Productname);
                     itemquantitycart.Add(cart.Quantity);
                     itempricecart.Add(cart.Price);
+                    grandtotal = grandtotal + cart.Price;
 
                     Console.WriteLine();
 
@@ -1307,11 +1057,14 @@ namespace BeautyStore
                             Console.WriteLine($"                   {itemnamecart[i]}           |                {itemquantitycart[i]}             |           {itempricecart[i]} ");
                             Console.WriteLine();
                         }
+                        Console.WriteLine($"                       GRAND TOTAL                  |                  {grandtotal}");
 
                         Console.WriteLine("_______________________________________________________________________________");
                         Console.WriteLine("If you want to remove item from cart press r:");
                         Console.WriteLine("If you want to place order press p:");
                         Console.WriteLine("If you want to continue shopping press c:");
+                        Console.WriteLine("If you want to go to main menu press m:");
+                        Console.WriteLine("If you want to go exit press e:");
                         ch3 = Convert.ToChar(Console.ReadLine());
                         if (ch3 == 'p')
                         {
@@ -1368,7 +1121,7 @@ namespace BeautyStore
                                     mystore.MyStore();
                                     break;
                                 case "3":
-                                    MySkin(opt3);
+                                    MySkin("3");
                                     break;
 
                             }
@@ -1392,15 +1145,24 @@ namespace BeautyStore
                             }
                             else if (opt4 == "2")
                             {
-                                MySkin(opt3);
+                                MySkin("3");
 
                             }
 
                         }
                         else if (ch3 == 'c')
                         {
-                            MySkin(opt3);
+                            MySkin("3");
 
+
+                        }
+                        else if (ch3 == 'm')
+                        {
+                            mystore.MyStore();
+                        }
+                        else if (ch3 == 'e')
+                        {
+                            adaa.LogoutAdaa();
 
                         }
                         else
@@ -1412,7 +1174,7 @@ namespace BeautyStore
                     }
                     else if (ch2 == 'c')
                     {
-                        MySkin(opt3);
+                        MySkin("3");
 
                     }
                     else
@@ -1425,7 +1187,12 @@ namespace BeautyStore
 
 
             }
-            else
+            else if (ch1 == 'm')
+            {
+                mystore.MyStore();
+            }
+
+            else if (ch1 == 'e')
             {
                 adaa.LogoutAdaa();
             }
@@ -1434,7 +1201,9 @@ namespace BeautyStore
 
         public void MaskCart(string opt3, int qnty)
         {
-            Console.WriteLine("Press 'y' to add product in cart or press any character to go exit:");
+            Console.WriteLine("Press 'y' to add product in cart:");
+            Console.WriteLine("Press 'e' character to go exit:");
+            Console.WriteLine("Press 'm' character to go to main menu:");
             ch1 = Convert.ToChar(Console.ReadLine());
 
             if (ch1 == 'y')
@@ -1584,19 +1353,22 @@ namespace BeautyStore
                             Price = price
 
                         };
+                        myorder = JsonConvert.SerializeObject(order);
+                        if (counter == 1) { File.WriteAllText(@"order.json", myorder); }
+                        else if (counter > 1) { File.AppendAllText(@"order.json", myorder); }
+                        cart = JsonConvert.DeserializeObject<Orders>(myorder);
+
 
 
                     }
-                    myorder = JsonConvert.SerializeObject(order);
-                    if (counter == 1) { File.WriteAllText(@"order.json", myorder); }
-                    else if (counter > 1) { File.AppendAllText(@"order.json", myorder); }
-                    cart = JsonConvert.DeserializeObject<Orders>(myorder);
+                    
 
                     //cartitems = cart.Productname;
                     //cartquantity = cart.Quantity;
                     itemnamecart.Add(cart.Productname);
                     itemquantitycart.Add(cart.Quantity);
                     itempricecart.Add(cart.Price);
+                    grandtotal = grandtotal + cart.Price;
 
                     Console.WriteLine();
 
@@ -1617,11 +1389,14 @@ namespace BeautyStore
                             Console.WriteLine($"                   {itemnamecart[i]}           |                {itemquantitycart[i]}             |           {itempricecart[i]} ");
                             Console.WriteLine();
                         }
+                        Console.WriteLine($"                       GRAND TOTAL                  |                  {grandtotal}");
 
                         Console.WriteLine("_______________________________________________________________________________");
                         Console.WriteLine("If you want to remove item from cart press r:");
                         Console.WriteLine("If you want to place order press p:");
                         Console.WriteLine("If you want to continue shopping press c:");
+                        Console.WriteLine("If you want to go to main menu press m:");
+                        Console.WriteLine("If you want to go exit press e:");
                         ch3 = Convert.ToChar(Console.ReadLine());
                         if (ch3 == 'p')
                         {
@@ -1678,7 +1453,7 @@ namespace BeautyStore
                                     mystore.MyStore();
                                     break;
                                 case "3":
-                                    MySkin(opt3);
+                                    MySkin("4");
                                     break;
 
                             }
@@ -1702,16 +1477,24 @@ namespace BeautyStore
                             }
                             else if (opt4 == "2")
                             {
-                                MySkin(opt3);
+                                MySkin("4");
 
                             }
 
                         }
                         else if (ch3 == 'c')
                         {
-                            MySkin(opt3);
+                            MySkin("4");
 
 
+                        }
+                        else if (ch3 == 'm')
+                        {
+                            mystore.MyStore();
+                        }
+                        else if (ch3 == 'e')
+                        {
+                            adaa.LogoutAdaa();
                         }
                         else
                         {
@@ -1722,7 +1505,7 @@ namespace BeautyStore
                     }
                     else if (ch2 == 'c')
                     {
-                        MySkin(opt3);
+                        MySkin("4");
 
                     }
                     else
@@ -1735,18 +1518,17 @@ namespace BeautyStore
 
 
             }
-            else
+            else if (ch1 == 'm')
+            {
+                mystore.MyStore();
+            }
+
+            else if (ch1 == 'e')
             {
                 adaa.LogoutAdaa();
             }
 
         }
-
-
-
-
-
-
     }
 
 }

@@ -60,6 +60,16 @@ namespace BeautyStore
     class Adaa
     {
         static string input;
+
+        protected static string ad_usr;
+        protected static string ad_pd;
+        protected static Regex regex;
+        protected static string usrname = "";
+        protected static string email = "";
+        protected static string dt = "";
+        protected static Match match;
+        protected static string pass = "";
+
         static ArrayList password;
         static string[] passwordArray;
         static ArrayList username;
@@ -76,6 +86,7 @@ namespace BeautyStore
         static string[] lnameArray;
         static int ID;
         static bool login = false;
+        StoreAdaa sa=new StoreAdaa();
         static void Main(string[] args)
         {
             StoreAdaa mystore = new StoreAdaa();
@@ -86,21 +97,21 @@ namespace BeautyStore
             login = false;
             //bool adminLogin = false;
 
-            maillArray = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\email.txt");//loads a text file and sets it to an array
+            maillArray = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\email.txt");//loads a text file and sets it to an array
             maill = new ArrayList(maillArray);
-            contactArray = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\contact.txt");//loads a text file and sets it to an array
+            contactArray = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\contact.txt");//loads a text file and sets it to an array
             contactt = new ArrayList(contactArray);//sets the array to an array list
-            locationArray = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\location.txt");//loads a text file and sets it to an array
+            locationArray = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\location.txt");//loads a text file and sets it to an array
             locationn = new ArrayList(locationArray);//sets the array to an array list
-            usernameArray = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\username.txt");//loads a text file and sets it to an array
+            usernameArray = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\username.txt");//loads a text file and sets it to an array
             username = new ArrayList(usernameArray);//sets the array to an array list
-            passwordArray = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\password.txt");
+            passwordArray = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\password.txt");
             password = new ArrayList(passwordArray);
-            fnameArray = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\password.txt");
+            fnameArray = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\password.txt");
             firstname = new ArrayList(fnameArray);
-            lnameArray = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\password.txt");
+            lnameArray = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\password.txt");
             lastname = new ArrayList(lnameArray);
-            string[] timeArray = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\time.txt");
+            string[] timeArray = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\time.txt");
             ArrayList time = new ArrayList(timeArray);
 
         ROLE:
@@ -122,11 +133,11 @@ namespace BeautyStore
             getAdminDetails:
                 Admin ad = new Admin();
                 Console.WriteLine("Enter username for admin :");
-                string ad_usr = Console.ReadLine();
+                ad_usr = Console.ReadLine();
                 string usr = ad.Username;
                 Console.WriteLine();
                 Console.WriteLine("Enter password for admin :");
-                string ad_pd = Console.ReadLine();
+                ad_pd = Console.ReadLine();
                 string pd = ad.Password;
 
                 if (ad_usr == usr && ad_pd == pd)
@@ -170,11 +181,11 @@ namespace BeautyStore
                             goto adminDashboard;*/
 
                         case "2":
-                            string[] usernames = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\username.txt");
-                            string[] logintimes = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\time.txt");
-                            string[] emails = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\email.txt");
-                            string[] locations = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\location.txt");
-                            string[] contacts = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\contact.txt");
+                            string[] usernames = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\username.txt");
+                            string[] logintimes = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\time.txt");
+                            string[] emails = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\email.txt");
+                            string[] locations = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\location.txt");
+                            string[] contacts = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\contact.txt");
 
                             Console.WriteLine("Registration Details of users\n");
                             Console.WriteLine("_______________________________________________________________________________________________________________________________");
@@ -198,20 +209,20 @@ namespace BeautyStore
                             Console.WriteLine("Enter email id for user:");
                             string emailToDelete = Console.ReadLine();
 
-                            List<string> emaillist = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\email.txt").ToList();
-                            string filepath1 = @"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\email.txt";
+                            List<string> emaillist = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\email.txt").ToList();
+                            string filepath1 = @"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\email.txt";
 
-                            List<string> userlist = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\username.txt").ToList();
-                            string filepath2 = @"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\username.txt";
+                            List<string> userlist = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\username.txt").ToList();
+                            string filepath2 = @"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\username.txt";
 
-                            List<string> passwordlist = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\password.txt").ToList();
-                            string filepath3 = @"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\password.txt";
+                            List<string> passwordlist = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\password.txt").ToList();
+                            string filepath3 = @"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\password.txt";
 
-                            List<string> contactlist = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\contact.txt").ToList();
-                            string filepath4 = @"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\contact.txt";
+                            List<string> contactlist = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\contact.txt").ToList();
+                            string filepath4 = @"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\contact.txt";
 
-                            List<string> locationlist = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\location.txt").ToList();
-                            string filepath5 = @"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\location.txt";
+                            List<string> locationlist = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\location.txt").ToList();
+                            string filepath5 = @"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\location.txt";
 
 
                             //string firstItem = quotelist[0];
@@ -307,16 +318,16 @@ namespace BeautyStore
                             Console.Write("Input the email of user:");
                             var emailToDisplay = Console.ReadLine();
 
-                            string[] usernames1 = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\username.txt");
-                            string[] logintimes1 = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\time.txt");
-                            string[] emails1 = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\email.txt");
-                            string[] locations1 = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\location.txt");
-                            string[] contacts1 = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\contact.txt");
+                            string[] usernames1 = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\username.txt");
+                            string[] logintimes1 = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\time.txt");
+                            string[] emails1 = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\email.txt");
+                            string[] locations1 = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\location.txt");
+                            string[] contacts1 = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\contact.txt");
 
                             //StoreSkincareitem();
 
                             System.IO.StreamReader file =
-                                new System.IO.StreamReader(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\email.txt");
+                                new System.IO.StreamReader(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\email.txt");
 
                             while ((line = file.ReadLine()) != null)
                             {
@@ -367,13 +378,13 @@ namespace BeautyStore
                             }*/
 
                             //products name
-                            string[] skincare = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\skincare.txt");
-                            string[] haircare = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\Hair.txt");
-                            string[] makeup = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\makeup.txt");
-                            string[] appliance = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\appliance.txt");
+                            string[] skincare = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\skincare.txt");
+                            string[] haircare = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\Hair.txt");
+                            string[] makeup = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\makeup.txt");
+                            string[] appliance = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\appliance.txt");
 
                             //products price
-                            string[] skincareprice = File.ReadAllLines(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\skincareprices.txt");
+                            string[] skincareprice = File.ReadAllLines(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\skincareprices.txt");
 
 
                         opt1:
@@ -560,7 +571,7 @@ namespace BeautyStore
                                 Console.WriteLine(@"You logged in!
 You last logged in at " + lastLogin);
                                 time[ID] = (Convert.ToString(DateTime.Now));//sets a new login time
-                                using (TextWriter writer = File.CreateText(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\time.txt"))//creates a txt file called time
+                                using (TextWriter writer = File.CreateText(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\time.txt"))//creates a txt file called time
                                 {
                                     foreach (string date in time)
                                     {
@@ -597,20 +608,15 @@ You last logged in at " + lastLogin);
                 case "register":
 
 
-                    string usrname = "";
-                    string pwd = "";
-                    string email = "";
-                    string dt = "";
-
                 registeremail:
                     //int id = RegisterUser1.idn + 1;
                     Console.WriteLine("Enter your email for registration :");
                     email = Console.ReadLine();
 
-                    bool val = File.ReadAllText(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\email.txt").Contains(email);
+                    bool val = File.ReadAllText(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\email.txt").Contains(email);
 
-                    Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-                    Match match = regex.Match(email);
+                    regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+                    match = regex.Match(email);
 
                     if (match.Success)
                     {
@@ -665,7 +671,7 @@ You last logged in at " + lastLogin);
 1. At least one letter (uppercase or lowercase)
 2. At least one number
 3. At least one special character");
-                            string pass = Console.ReadLine();
+                            pass = Console.ReadLine();
 
                             if (pass.Length >= 8 && pass.Length <= 32)
                             {
@@ -710,7 +716,7 @@ You last logged in at " + lastLogin);
                                         {
                                             contactt.Add(cnt);//adds the password to the password list
 
-                                            using (TextWriter writer = File.CreateText(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\email.txt"))//creates a txt file called username
+                                            using (TextWriter writer = File.CreateText(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\email.txt"))//creates a txt file called username
                                             {
                                                 foreach (string m in maill)
                                                 {
@@ -718,7 +724,7 @@ You last logged in at " + lastLogin);
                                                 }
                                             }
 
-                                            using (TextWriter writer = File.CreateText(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\username.txt"))//creates a txt file called username
+                                            using (TextWriter writer = File.CreateText(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\username.txt"))//creates a txt file called username
                                             {
                                                 foreach (string name in username)
                                                 {
@@ -726,7 +732,7 @@ You last logged in at " + lastLogin);
                                                 }
                                             }
 
-                                            using (TextWriter writer = File.CreateText(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\password.txt"))
+                                            using (TextWriter writer = File.CreateText(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\password.txt"))
                                             {
                                                 foreach (string p in password)
                                                 {
@@ -734,7 +740,7 @@ You last logged in at " + lastLogin);
                                                 }
                                             }
 
-                                            using (TextWriter writer = File.CreateText(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\location.txt"))
+                                            using (TextWriter writer = File.CreateText(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\location.txt"))
                                             {
                                                 foreach (string l in locationn)
                                                 {
@@ -742,7 +748,7 @@ You last logged in at " + lastLogin);
                                                 }
                                             }
 
-                                            using (TextWriter writer = File.CreateText(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\contact.txt"))
+                                            using (TextWriter writer = File.CreateText(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\contact.txt"))
                                             {
                                                 foreach (string c in contactt)
                                                 {
@@ -750,7 +756,7 @@ You last logged in at " + lastLogin);
                                                 }
                                             }
 
-                                            using (TextWriter writer = File.CreateText(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\firstnames.txt"))
+                                            using (TextWriter writer = File.CreateText(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\firstnames.txt"))
                                             {
                                                 foreach (string fn in firstname)
                                                 {
@@ -758,7 +764,7 @@ You last logged in at " + lastLogin);
                                                 }
                                             }
 
-                                            using (TextWriter writer = File.CreateText(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\lastnames.txt"))
+                                            using (TextWriter writer = File.CreateText(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\lastnames.txt"))
                                             {
                                                 foreach (string ln in lastname)
                                                 {
@@ -769,7 +775,7 @@ You last logged in at " + lastLogin);
                                             dt = Convert.ToString(DateTime.Now);
                                             //time.Add(Convert.ToString(DateTime.Now));
                                             time.Add(dt);
-                                            using (TextWriter writer = File.CreateText(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\time.txt"))//creates a txt file called username
+                                            using (TextWriter writer = File.CreateText(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\time.txt"))//creates a txt file called username
                                             {
                                                 foreach (string date in time)
                                                 {
@@ -892,6 +898,12 @@ Welcome back " + currUser);
                         Console.WriteLine("Logged out");
                         Console.ReadKey();
                     }
+                    else if (input == "n")
+                    {
+                        login = true;
+                        sa.MyStore();
+
+                    }
                     break;
 
                 case "2":
@@ -899,7 +911,7 @@ Welcome back " + currUser);
                     Console.WriteLine("What would you like your new password to be?");
                     input = Console.ReadLine();
                     password[ID] = input;
-                    using (TextWriter writer = File.CreateText(@"C:\Users\User\Documents\AdminSideFunctions\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\password.txt"))
+                    using (TextWriter writer = File.CreateText(@"C:\Users\Maaria Khan\myproj\P0-AdaaBeauty-MaariaKhan\BeautyStore\BeautyStore\password.txt"))
                     {
                         foreach (string pass in password)
                         {
